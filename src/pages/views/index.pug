@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    include ../includes/head.pug
+  body
+    main.main
+      header.header
+        .top
+          .img
+            img(src="favicon.png", alt="Vaniland logo, A silhouette of the letter V")
+          h1.xlg-text.title #{ htmlWebpackPlugin.options.title }
+        .bottom
+          p.md-text A collection of games and UI components made with HTML, CSS and JavaScript.

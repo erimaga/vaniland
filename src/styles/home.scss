@@ -1,0 +1,24 @@
+.header {
+  @include default-grid(6);
+}
+
+.top {
+  grid-column: 2 / -2;
+
+  padding: 3rem 0;
+}
+
+.bottom {
+  grid-column: 1 / -1;
+}
+
+.title {
+  text-align: center;
+}
+
+.img {
+  @include center-grid;
+
+  width: 100%;
+  text-align: center;
+}
