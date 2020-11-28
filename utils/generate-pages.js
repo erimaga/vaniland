@@ -11,16 +11,16 @@ let pagesPlugin = [];
 
 const format = (str) => str.split('-').join(' ');
 
-const generate = (file, template) => {
+const generate = (file, template, folder) => {
   const title = file.replace(/\.pug$/, '');
   const index = title === 'index';
 
   const page = new HtmlWebpackPlugin({
     template,
-    filename: index ? 'index.html' : `${title}/index.html`,
+    filename: index ? 'index.html' : `${folder}/${title}/index.html`,
     title: index ? 'Vaniland' : format(title.toLocaleUpperCase()),
     inject: 'head',
-    chunks: ['main', title],
+    chunks: index ? ['main', 'home'] : ['main', title],
     minify: env,
     favicon: path.resolve(__dirname, '../src/static/favicon.png'),
   });
@@ -29,13 +29,16 @@ const generate = (file, template) => {
 };
 
 parent.forEach((child) => {
-  const location = path.resolve(__dirname, `../src/pages/${child}`);
-  const page = fss.readdirSync(location);
-  if (page.length !== 0) {
-    page.forEach((file) => {
-      const template = path.join(location, `/${file}`);
-      generate(file, template);
-    });
+  if (child !== 'includes') {
+    const location = path.resolve(__dirname, `../src/pages/${child}`);
+    const page = fss.readdirSync(location);
+
+    if (page.length !== 0) {
+      page.forEach((file) => {
+        const template = path.join(location, `/${file}`);
+        generate(file, template, child);
+      });
+    }
   }
 });
 
