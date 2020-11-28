@@ -13,7 +13,7 @@ module.exports = {
     ...entries,
   },
   output: {
-    filename: devMode ? '[name].js' : '[name]-[contentHash].js',
+    filename: devMode ? '[name].js' : '[name]-[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
@@ -22,8 +22,8 @@ module.exports = {
       inlineAll: true,
     }),
     new MiniCssExtractPlugin({
-      filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
-      chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[hash].css',
+      filename: devMode ? 'css/[name].css' : 'css/[name].[contenthash].css',
+      chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[contenthash].css',
     }),
   ],
   module: {
