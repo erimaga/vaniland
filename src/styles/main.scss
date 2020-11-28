@@ -13,9 +13,21 @@ body {
   scroll-snap-type: mandatory;
 }
 
+button {
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline-color: transparent(currentColor, 0.4);
+}
+
 .main {
   @include default-grid(12);
   scroll-snap-align: start;
+
+  min-height: 100vh;
+}
+
+.content-container {
+  grid-column: 2 / -2;
 }
 
 .header {
@@ -45,4 +57,18 @@ body {
 }
 .xsm-text {
   font-size: fontSize('xsm');
+}
+
+.default-btn {
+  color: color('text-light');
+  background-color: color('secondary');
+
+  border: 1px solid transparent;
+}
+
+.outline-btn {
+  color: color('secondary');
+  background-color: transparent;
+
+  border: 1px solid currentColor;
 }

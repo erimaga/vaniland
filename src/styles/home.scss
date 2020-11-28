@@ -1,5 +1,10 @@
+.header,
+.action-btns {
+  grid-column: 2 / -2;
+}
 .header {
   @include default-grid(6);
+  align-items: center;
 }
 
 .top {
@@ -21,4 +26,25 @@
 
   width: 100%;
   text-align: center;
+}
+
+.action-btns {
+  @include directional-grid(row);
+
+  padding: 3rem 0;
+}
+
+.action-btn {
+  @include center-grid;
+
+  padding: 1.5rem 1rem;
+
+  text-decoration: none;
+
+  border-radius: 10px;
+}
+
+.github-btn {
+  color: color('text-mid');
+  background-color: transparent;
 }

@@ -2,10 +2,16 @@
   display: grid;
   grid-template-columns: repeat($cols, 1fr);
   grid-template-rows: auto;
-  align-items: center;
 }
 
 @mixin center-grid {
   display: grid;
   place-content: center;
+}
+
+@mixin directional-grid($direction) {
+  display: grid;
+  grid-auto-flow: $direction;
+  gap: 1.5rem;
+  align-items: center;
 }
