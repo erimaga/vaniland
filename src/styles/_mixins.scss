@@ -6,7 +6,7 @@
 
 @mixin center-grid {
   display: grid;
-  place-content: center;
+  place-items: center;
 }
 
 @mixin directional-grid($direction) {
