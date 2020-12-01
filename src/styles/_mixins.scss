@@ -1,7 +1,7 @@
-@mixin default-grid($cols) {
+@mixin default-grid($cols, $rows) {
   display: grid;
   grid-template-columns: repeat($cols, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: $rows;
 }
 
 @mixin center-grid {
@@ -13,5 +13,11 @@
   display: grid;
   grid-auto-flow: $direction;
   gap: 1.5rem;
+  align-items: center;
+}
+
+@mixin spread-flex($justify) {
+  display: flex;
+  justify-content: $justify;
   align-items: center;
 }
