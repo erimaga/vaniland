@@ -1,0 +1,52 @@
+.header {
+  text-align: center;
+}
+
+.outcome-board {
+  @include center-grid;
+
+  color: color('secondary');
+  padding: 4rem 0;
+
+  min-height: 200px;
+
+  text-align: center;
+}
+
+.action-btns {
+  $base: 5rem;
+  $win: color('accent');
+  $lose: color('danger');
+  $draw: color('neutral');
+
+  @include directional-grid(column);
+  justify-content: space-between;
+
+  padding: 3rem 0;
+
+  .action-btn {
+    @include center-grid;
+
+    width: $base;
+    height: $base;
+    font-size: $base / 2;
+
+    border-radius: 50%;
+
+    outline: none;
+
+    transition: all 0.35s ease-in-out;
+  }
+}
+
+.success {
+  color: color('accent');
+}
+
+.draw {
+  color: color('neutral');
+}
+
+.success-btn {
+  background-color: color('accent');
+}
