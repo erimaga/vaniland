@@ -37,6 +37,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               // Prefer `dart-sass`
+              // eslint-disable-next-line global-require
               implementation: require('sass'),
               additionalData: '@import "./src/styles/_config.scss";',
             },
