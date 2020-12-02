@@ -1,11 +1,18 @@
 import '../styles/main.scss';
 import routes from '../routes';
 
-document.addEventListener('DOMContentLoaded', () => {
+function navigation() {
+  const menu = document.getElementById('menu');
+  const menuBtns = document.querySelectorAll('.nav-btn');
+  const subMenuBtn = document.querySelectorAll('#sub-menu__btn');
+  const pagesMenu = document.getElementById('pages-menu');
+  const gamesMenu = document.getElementById('games-menu');
+  const uisMenu = document.getElementById('ui-menu');
+
   // Generate HTML elements for the routes
   routes.forEach((route) => {
-    const gameMenu = document.getElementById('game-menu');
-    const pageMenu = document.getElementById('page-menu');
+    const gameMenu = document.getElementById('games-menu');
+    const pageMenu = document.getElementById('pages-menu');
     const uiMenu = document.getElementById('ui-menu');
 
     const link = document.createElement('a');
@@ -23,4 +30,30 @@ document.addEventListener('DOMContentLoaded', () => {
       return uiMenu.appendChild(link);
     }
   });
+
+  // Handle opening and closing of sub menu's
+  subMenuBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const { open } = e.target.dataset;
+
+      if (open === 'pages menu') {
+        pagesMenu.classList.toggle('hide');
+      }
+      if (open === 'games menu') {
+        gamesMenu.classList.toggle('hide');
+      }
+      if (open === 'ui menu') {
+        uisMenu.classList.toggle('hide');
+      }
+    });
+  });
+
+  // Handle opening and closing of the mobile menu
+  menuBtns.forEach((btn) => {
+    btn.addEventListener('click', () => menu.classList.toggle('menu__hide'));
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  navigation();
 });

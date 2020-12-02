@@ -1,18 +1,20 @@
 nav(class="nav" role="navigation" aria-label="main navigation")
   .top-nav
-    .logo
-      img(src="/favicon.png", alt="Logo")
-  .menu
-    .top
-      button.outline-btn.close-btn X
+    a(class="logo" href="/")
+      img(src="/static/images/logo.png" id="logo" alt="Logo")
+    button(class="nav-btn open-menu__btn" aria-label="open menu button")
+      img(src="/static/menu.svg" alt="menu")
+  div(class="menu menu__hide" id="menu")
+    button(class="nav-btn close-menu__btn" aria-label="close menu button")
+      img(src="/static/x.svg" alt="close")
     .bottom
       .sub-menu
-        button.md-text.sub-menu__title Pages
-        ul#page-menu.menu-links
+        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="pages menu") Pages
+        ul(class="menu-links hide" id="pages-menu")
       .sub-menu
-        button.md-text.sub-menu__title Games
-        ul#game-menu.menu-links
+        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="games menu") Games
+        ul(class="menu-links hide" id="games-menu")
       .sub-menu
-        button.md-text.sub-menu__title UI Components
-        ul#ui-menu.menu-links
+        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="ui menu") UI Components
+        ul(class="menu-links hide" id="ui-menu")
 
