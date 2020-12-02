@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const pagesPlugin = require('./utils/generate-pages');
 const entries = require('./utils/entries');
@@ -12,19 +14,31 @@ module.exports = {
     main: path.resolve(__dirname, 'src/js/main.js'),
     ...entries,
   },
+  resolve: {
+    extensions: ['*', '.js'],
+  },
   output: {
     filename: devMode ? '[name].js' : '[name]-[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     ...pagesPlugin,
-    new HtmlWebpackInlineSVGPlugin({
-      inlineAll: true,
+    new CleanWebpackPlugin({
+      verbose: true,
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[contenthash].css',
       chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[contenthash].css',
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/static',
+          to: 'static',
+        },
+      ],
+    }),
+    new HtmlWebpackInlineSVGPlugin(),
   ],
   module: {
     rules: [
@@ -46,7 +60,15 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: 'file-loader',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[path][name].[ext]',
+              limit: 8000,
+            },
+          },
+        ],
       },
       {
         test: /\.pug$/,
