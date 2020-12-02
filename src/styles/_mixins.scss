@@ -21,3 +21,9 @@
   justify-content: $justify;
   align-items: center;
 }
+
+@mixin lgScreen {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
