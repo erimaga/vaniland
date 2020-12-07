@@ -1,21 +1,15 @@
-doctype html
-html(lang="en")
-  head
-    include ../includes/head.pug
-  body
-    main.main
-      include ../includes/navigation.pug
-      .content-container
-        header.header
-          h1.xl-text.title Rock, Paper, Scissors
-        include ../includes/score-board.pug
-        .outcome-board
-          h2.lg-text.outcome-title Make your move
-          p.outcome-detail Forge your metal
-        .action-btns
-          button(class="action-btn outline-btn lg-text" id="rock" data-choice="rock")
-            span(class="action-icon icon" role="image" aria-label="rock") ✊
-          button(class="action-btn outline-btn lg-text" id="paper" data-choice="paper")
-            span(class="action-icon icon" role="image" aria-label="paper") 🤚
-          button(class="action-btn outline-btn lg-text" id="scissors" data-choice="scissors")
-            span(class="action-icon icon" role="image" aria-label="scissors") ✌
+extends ../../layouts/game-layout.pug
+block title
+  h1.xl-text.title Rock, Paper, Scissors
+block content
+  .outcome-board
+    h2.lg-text.outcome-title Make your move
+    p.outcome-detail Forge your metal
+  .action-btns
+    button(class="action-btn outline-btn lg-text" id="rock" data-choice="rock")
+      span(class="action-icon icon" role="image" aria-label="rock") ✊
+    button(class="action-btn outline-btn lg-text" id="paper" data-choice="paper")
+      span(class="action-icon icon" role="image" aria-label="paper") 🤚
+    button(class="action-btn outline-btn lg-text" id="scissors" data-choice="scissors")
+      span(class="action-icon icon" role="image" aria-label="scissors") ✌
+

@@ -1,4 +1,6 @@
 const path = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -23,6 +25,15 @@ module.exports = {
   },
   plugins: [
     ...pagesPlugin,
+    new HtmlWebpackPlugin({
+      template: 'src/pages/views/index.pug',
+      filename: 'index.html',
+      title: 'Vaniland',
+      inject: 'head',
+      chunks: ['main', 'home'],
+      minify: !devMode,
+      favicon: 'src/static/favicon.png',
+    }),
     new CleanWebpackPlugin({
       verbose: true,
     }),
@@ -33,7 +44,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/static',
+          from: path.resolve(__dirname, 'src/static'),
           to: 'static',
         },
       ],

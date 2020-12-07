@@ -2,9 +2,13 @@ doctype html
 html(lang="en")
   head
     include ../includes/head.pug
+    block head
   body
     main.main
       include ../includes/navigation.pug
       .content-container
         header.header
-          h1.xl-text.title Games
+          block title
+            h1.xl-text.title Games
+        include ../includes/score-board.pug
+        block content

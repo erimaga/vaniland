@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    include ../includes/head.pug
+    block head
+  body
+    main.main
+      include ../includes/navigation.pug
+      .content-container
+        header.header
+          .top
+            block title
+              h1.xl-text.title.text-center #{ htmlWebpackPlugin.options.title }
+          .bottom
+            p.sm-text.text-center A collection of games and UI components made with HTML, CSS and JavaScript.
+        block content

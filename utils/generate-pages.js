@@ -7,7 +7,7 @@ const parent = fss.readdirSync(path.resolve(__dirname, '../src/pages'));
 
 const env = process.env.NODE_ENV !== 'production';
 
-let pagesPlugin = [];
+const pagesPlugin = [];
 
 const format = (str) => str.split('-').join(' ');
 
@@ -17,10 +17,10 @@ const generate = (file, template, folder) => {
 
   const page = new HtmlWebpackPlugin({
     template,
-    filename: index ? 'index.html' : `${folder}/${title}/index.html`,
-    title: index ? 'Vaniland' : format(title.toLocaleUpperCase()),
+    filename: index ? `${folder}/index.html` : `${folder}/${title}/index.html`,
+    title: index ? folder : format(title),
     inject: 'head',
-    chunks: index ? ['main', 'home'] : ['main', title],
+    chunks: ['main', title],
     minify: env,
     favicon: path.resolve(__dirname, '../src/static/favicon.png'),
   });
