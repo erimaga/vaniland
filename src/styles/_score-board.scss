@@ -3,8 +3,8 @@
 
   padding: 2rem;
 
-  background-color: color('background-dark');
-  border: 2px solid color('secondary');
+  background-color: color('background-light');
+  // border: 2px solid color('secondary');
   border-radius: 20px;
 
   .scores {
@@ -34,7 +34,11 @@
   .score {
     $win: color('success');
     $draw: color('neutral');
-    $normal: color('text-light');
+    $normal: color('text-mid');
     color: $normal;
+  }
+
+  .outcome-board {
+    text-align: center;
   }
 }
