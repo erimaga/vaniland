@@ -11,6 +11,52 @@ const entries = require('./utils/entries');
 
 const devMode = process.env.NODE_ENV === 'development';
 
+const styleLoader = {
+  test: /\.(sa|sc|c)ss$/,
+  use: [
+    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        // Prefer `dart-sass`
+        // eslint-disable-next-line global-require
+        implementation: require('sass'),
+        additionalData: '@import "./src/styles/_config.scss";',
+      },
+    },
+  ],
+};
+
+const urlLoader = {
+  test: /\.(jpe?g|png|gif|svg)$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        name: '[path][name].[ext]',
+        limit: 8000,
+      },
+    },
+  ],
+};
+
+const babelLoader = {
+  test: /\.m?js$/,
+  exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env'],
+    },
+  },
+};
+
+const pugLoader = {
+  test: /\.pug$/,
+  use: 'pug-loader',
+};
+
 module.exports = {
   entry: {
     main: path.resolve(__dirname, 'src/js/main.js'),
@@ -55,49 +101,6 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              // Prefer `dart-sass`
-              // eslint-disable-next-line global-require
-              implementation: require('sass'),
-              additionalData: '@import "./src/styles/_config.scss";',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[path][name].[ext]',
-              limit: 8000,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.pug$/,
-        use: 'pug-loader',
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
-    ],
+    rules: [styleLoader, urlLoader, pugLoader, babelLoader],
   },
 };
