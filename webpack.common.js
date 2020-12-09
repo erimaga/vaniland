@@ -34,6 +34,10 @@ module.exports = {
       minify: !devMode,
       favicon: 'src/static/favicon.png',
     }),
+    new HtmlWebpackInlineSVGPlugin({
+      runPreEmit: true,
+      inlineAll: true,
+    }),
     new CleanWebpackPlugin({
       verbose: true,
     }),
@@ -44,12 +48,11 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/static'),
+          from: 'src/static',
           to: 'static',
         },
       ],
     }),
-    new HtmlWebpackInlineSVGPlugin(),
   ],
   module: {
     rules: [
