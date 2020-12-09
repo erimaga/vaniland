@@ -8,6 +8,7 @@
   "extends": ["eslint-config-airbnb-base"],
   "rules": {
     "no-unused-vars": "warn",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "linebreak-style": "off"
   }
 }
