@@ -1,20 +1,24 @@
-nav(class="nav" role="navigation" aria-label="main navigation")
+nav(class="nav" id="nav" role="navigation" aria-label="main navigation")
   .top-nav
     a(class="logo" href="/")
       img(src="/static/images/logo.png" id="logo" alt="Logo")
-    button(class="nav-btn open-menu__btn" aria-label="open menu button")
-      img(src="/static/menu.svg" alt="menu")
+    button(class="nav-btn open-menu__btn" aria-label="open menu button" tab-index="0")
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   div(class="menu menu__hide" id="menu")
-    button(class="nav-btn close-menu__btn" aria-label="close menu button")
-      img(src="/static/x.svg" alt="close")
+    button(class="nav-btn close-menu__btn" aria-label="close menu button" tab-index="0")
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     .bottom
       .sub-menu
-        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="pages menu") Pages
+        button(class="md-text sub-menu__title open-sub-menu" id="sub-menu__page-btn" data-open="pages menu" aria-label="Open the pages sub menu") Pages
         ul(class="menu-links hide" id="pages-menu")
       .sub-menu
-        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="games menu") Games
+        button(class="md-text sub-menu__title open-sub-menu" id="sub-menu__games-btn" data-open="games menu" aria-label="Open the games sub menu") Games
         ul(class="menu-links hide" id="games-menu")
+          li
+            a(class="link" href="/games/") View All
       .sub-menu
-        button(class="md-text sub-menu__title" id="sub-menu__btn" data-open="ui menu") UI Components
+        button(class="md-text sub-menu__title open-sub-menu" id="sub-menu__ui-btn" data-open="ui menu" aria-label="Open the UI components sub menu") UI Components
         ul(class="menu-links hide" id="ui-menu")
+          li
+            a(class="link" href="/components/") View All
 

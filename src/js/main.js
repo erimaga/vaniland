@@ -2,9 +2,10 @@ import '../styles/main.scss';
 import routes from '../routes';
 
 function navigation() {
+  const nav = document.getElementById('nav');
   const menu = document.getElementById('menu');
   const menuBtns = document.querySelectorAll('.nav-btn');
-  const subMenuBtn = document.querySelectorAll('#sub-menu__btn');
+  const subMenuBtn = document.querySelectorAll('.open-sub-menu');
   const pagesMenu = document.getElementById('pages-menu');
   const gamesMenu = document.getElementById('games-menu');
   const uisMenu = document.getElementById('ui-menu');
@@ -15,10 +16,14 @@ function navigation() {
     const pageMenu = document.getElementById('pages-menu');
     const uiMenu = document.getElementById('ui-menu');
 
-    const link = document.createElement('a');
-    link.classList.add('link');
-    link.href = route.route;
-    link.textContent = route.name;
+    const anchor = document.createElement('a');
+    const link = document.createElement('li');
+
+    anchor.classList.add('link');
+    anchor.href = route.route;
+    anchor.textContent = route.name;
+
+    link.appendChild(anchor);
 
     if (route.page) {
       return pageMenu.appendChild(link);
@@ -37,13 +42,25 @@ function navigation() {
       const { open } = e.target.dataset;
 
       if (open === 'pages menu') {
-        pagesMenu.classList.toggle('hide');
+        gamesMenu.classList.add('hide');
+        uisMenu.classList.add('hide');
+        setTimeout(() => {
+          pagesMenu.classList.toggle('hide');
+        }, 40);
       }
       if (open === 'games menu') {
-        gamesMenu.classList.toggle('hide');
+        pagesMenu.classList.add('hide');
+        uisMenu.classList.add('hide');
+        setTimeout(() => {
+          gamesMenu.classList.toggle('hide');
+        }, 40);
       }
       if (open === 'ui menu') {
-        uisMenu.classList.toggle('hide');
+        gamesMenu.classList.add('hide');
+        pagesMenu.classList.add('hide');
+        setTimeout(() => {
+          uisMenu.classList.toggle('hide');
+        }, 40);
       }
     });
   });
@@ -51,6 +68,18 @@ function navigation() {
   // Handle opening and closing of the mobile menu
   menuBtns.forEach((btn) => {
     btn.addEventListener('click', () => menu.classList.toggle('menu__hide'));
+  });
+
+  document.addEventListener('scroll', (e) => {
+    const scrollPos = document.documentElement.scrollTop;
+    const pos = 10;
+
+    if (scrollPos > pos) {
+      nav.classList.add('nav-shadow');
+    }
+    if (scrollPos < pos) {
+      nav.classList.remove('nav-shadow');
+    }
   });
 }
 
