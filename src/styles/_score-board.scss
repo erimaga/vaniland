@@ -3,8 +3,8 @@
 
   padding: 2rem;
 
-  background-color: color('background-light');
-  // border: 1px solid color('background-mid');
+  background-color: paint('background-light');
+  // border: 1px solid paint('background-mid');
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
 
@@ -29,13 +29,13 @@
   }
 
   .score-title {
-    color: color('text-mid');
+    color: paint('text-mid');
   }
 
   .score {
-    $win: color('success');
-    $draw: color('neutral');
-    $normal: color('text-mid');
+    $win: paint('success');
+    $draw: paint('neutral');
+    $normal: paint('text-mid');
     color: $normal;
   }
 

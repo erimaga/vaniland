@@ -7,8 +7,8 @@ html {
   font-feature-settings: 'kern';
 }
 body {
-  color: color('text-dark');
-  background-color: color('background-light');
+  color: paint('text-dark');
+  background-color: paint('background-light');
 
   scroll-snap-type: mandatory;
 }
@@ -49,7 +49,7 @@ button {
   font-family: fontFamily('heading'), serif;
   font-weight: fontWeight('normal');
 
-  color: color('primary');
+  color: paint('primary');
 }
 
 .xl-text {
@@ -69,21 +69,21 @@ button {
 }
 
 .default-btn {
-  color: color('text-light');
-  background-color: color('secondary');
+  color: paint('text-light');
+  background-color: paint('secondary');
 
   border: 1px solid transparent;
 }
 
 .outline-btn {
-  color: color('secondary');
+  color: paint('secondary');
   background-color: transparent;
 
   border: 1px solid currentColor;
 }
 
 .icon {
-  color: color('text-mid');
+  color: paint('text-mid');
   pointer-events: none;
 }
 

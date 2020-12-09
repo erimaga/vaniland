@@ -5,7 +5,7 @@
 .outcome-board {
   @include center-grid;
 
-  color: color('secondary');
+  color: paint('secondary');
   padding: 4rem 0;
 
   min-height: 200px;
@@ -15,9 +15,9 @@
 
 .action-btns {
   $base: 5rem;
-  $win: color('accent');
-  $lose: color('danger');
-  $draw: color('neutral');
+  $win: paint('accent');
+  $lose: paint('danger');
+  $draw: paint('neutral');
 
   @include directional-grid(column);
   justify-content: space-between;
@@ -33,7 +33,7 @@
 
     border-radius: 50%;
 
-    box-shadow: 0 2px 4px rgba($color: color('secondary'), $alpha: 0.25);
+    box-shadow: 0 2px 4px rgba($color: paint('secondary'), $alpha: 0.25);
 
     outline: none;
 
@@ -42,13 +42,13 @@
 }
 
 .success {
-  color: color('accent');
+  color: paint('accent');
 }
 
 .draw {
-  color: color('neutral');
+  color: paint('neutral');
 }
 
 .success-btn {
-  background-color: color('accent');
+  background-color: paint('accent');
 }

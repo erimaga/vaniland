@@ -1,4 +1,4 @@
-@function color($name) {
+@function paint($name) {
   @return map-get($colors, $name);
 }
 
