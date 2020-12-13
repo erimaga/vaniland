@@ -12,5 +12,7 @@ html(lang="en")
             block title
               h1.xl-text.title.text-center #{ htmlWebpackPlugin.options.title }
           .bottom
-            p.sm-text.text-center A collection of games and UI components made with HTML, CSS and JavaScript.
+            block description
+              p.sm-text.text-center A collection of games and UI components made with HTML, CSS and JavaScript.
         block content
+      include ../includes/footer.pug

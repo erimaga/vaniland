@@ -1,15 +1,15 @@
 const fss = require('fs');
 const path = require('path');
 
-const files = fss.readdirSync(path.resolve(__dirname, '../src/js'));
+const files = fss.readdirSync(path.resolve(__dirname, '../assets/js'));
 
-let entries = {};
+const entries = {};
 
 files.forEach((file) => {
   const key = file.replace(/\.js$/, '');
 
   Object.defineProperty(entries, key, {
-    value: path.resolve(__dirname, `../src/js/${file}`),
+    value: path.resolve(__dirname, `../assets/js/${file}`),
     writable: true,
     enumerable: true,
     configurable: true,

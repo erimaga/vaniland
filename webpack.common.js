@@ -40,7 +40,7 @@ const styleLoader = {
         // Prefer `dart-sass`
         // eslint-disable-next-line global-require
         implementation: require('sass'),
-        additionalData: '@import "./src/styles/_config.scss";',
+        additionalData: '@import "./assets/styles/_config.scss";',
       },
     },
   ],
@@ -77,26 +77,26 @@ const pugLoader = {
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, 'src/js/main.js'),
+    main: path.resolve(__dirname, 'js/main.js'),
     ...entries,
   },
   resolve: {
     extensions: ['*', '.js'],
   },
   output: {
-    filename: devMode ? '[name].js' : '[name]-[contenthash].js',
+    filename: devMode ? 'js/[name].js' : 'js/[name]-[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     ...pagesPlugin,
     new HtmlWebpackPlugin({
-      template: 'src/pages/views/index.pug',
+      template: 'pages/views/index.pug',
       filename: 'index.html',
       title: 'Vaniland',
       inject: 'head',
       chunks: ['main', 'home'],
       minify: !devMode,
-      favicon: 'src/static/favicon.png',
+      favicon: 'static/favicon.png',
     }),
     new HtmlWebpackInlineSVGPlugin({
       runPreEmit: true,
@@ -112,7 +112,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/static',
+          from: 'static',
           to: 'static',
         },
       ],

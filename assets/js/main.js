@@ -15,6 +15,7 @@ function navigation() {
     const gameMenu = document.getElementById('games-menu');
     const pageMenu = document.getElementById('pages-menu');
     const uiMenu = document.getElementById('ui-menu');
+    const footerMenu = document.querySelector('.footer-nav__links');
 
     const anchor = document.createElement('a');
     const link = document.createElement('li');
@@ -26,13 +27,14 @@ function navigation() {
     link.appendChild(anchor);
 
     if (route.page) {
-      return pageMenu.appendChild(link);
+      pageMenu.appendChild(link);
+      footerMenu.appendChild(link);
     }
     if (route.game) {
-      return gameMenu.appendChild(link);
+      gameMenu.appendChild(link);
     }
     if (route.ui) {
-      return uiMenu.appendChild(link);
+      uiMenu.appendChild(link);
     }
   });
 
@@ -83,6 +85,33 @@ function navigation() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function contentLinks() {
+  const allGames = document.querySelector('.all-content-links');
+
+  routes.forEach((route) => {
+    const anchor = document.createElement('a');
+    const link = document.createElement('li');
+
+    anchor.classList.add('link');
+    anchor.href = route.route;
+    anchor.textContent = route.name;
+
+    link.appendChild(anchor);
+    if (route.game) {
+      allGames.appendChild(link);
+    }
+  });
+}
+
+function footer() {
+  const nav = document.querySelector('.footer-nav__links');
+}
+
+function main() {
   navigation();
+  contentLinks();
+  footer();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  main();
 });

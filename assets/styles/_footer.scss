@@ -1,0 +1,10 @@
+.footer {
+  grid-column: 2 / -2;
+
+  width: 100%;
+
+  padding: 3rem 2rem;
+  margin: 0 auto;
+
+  background-color: darken($color: paint('background-light'), $amount: 2);
+}

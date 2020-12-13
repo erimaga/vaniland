@@ -9,6 +9,7 @@
   "rules": {
     "no-unused-vars": "warn",
     "consistent-return": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "import/prefer-default-export": "warn"
   }
 }
